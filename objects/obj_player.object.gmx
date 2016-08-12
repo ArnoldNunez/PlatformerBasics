@@ -31,6 +31,9 @@ hsp = 0;            /// Horizontal speed
 hsp_carry = 0;      /// The movement bonus while on platform
 vsp = 0;            /// Vertical Speed
 movespeed = 4;
+jumps = 0;          /// Number of available jumps at any give time
+
+jumpsmax = 2;       /// Total number of jumps possible
 
 jumpspeed_normal = 7;
 jumpspeed_powerup = 10;
@@ -127,12 +130,21 @@ if (vsp &lt; 10) vsp += grav;
 /// Can only jump if floor is below us
 if (place_meeting(x, y+1, obj_wall))
 {
-    if (key_jump)
-    {
-        vsp -= jumpspeed;
-    }
+    /// Whenever we touch ground reset jumps available
+    jumps = jumpsmax;
 }
 
+if ((key_jump) &amp;&amp; (jumps &gt; 0))
+{
+    jumps -= 1;
+    vsp -= jumpspeed;
+}
+
+
+if (key_jump &amp;&amp; (place_meeting(x+1, y, obj_wall) || place_meeting(x-1, y, obj_wall)) )
+{
+    vsp = -jumpspeed;
+}
 
 /// Factor in moving platform speed
 var hsp_final = hsp + hsp_carry;
