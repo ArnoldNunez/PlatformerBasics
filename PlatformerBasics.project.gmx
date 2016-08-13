@@ -15,12 +15,19 @@
     <sprite>sprites\spr_checkpoint</sprite>
     <sprite>sprites\spr_platform</sprite>
     <sprite>sprites\spr_moveplatform</sprite>
+    <sprites name="menu">
+      <sprite>sprites\spr_selector</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\scr_death.gml</script>
+    <script>scripts\scr_menu.gml</script>
   </scripts>
+  <fonts name="fonts">
+    <font>fonts\fnt_options</font>
+  </fonts>
   <objects name="objects">
     <object>objects\obj_player</object>
     <object>objects\obj_wall</object>
@@ -31,11 +38,15 @@
     <object>objects\obj_checkpoint</object>
     <object>objects\obj_platform</object>
     <object>objects\obj_moveplatfrom</object>
+    <object>objects\obj_menu</object>
+    <object>objects\obj_win</object>
+    <object>objects\obj_player_pos</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_initialize</room>
     <room>rooms\room1</room>
     <room>rooms\room3</room>
+    <room>rooms\rm_win</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
